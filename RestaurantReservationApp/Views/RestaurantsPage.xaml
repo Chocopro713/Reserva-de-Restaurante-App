@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantReservationApp.Views.RestaurantsPage"
+             Title="RestaurantsPage">
+    <VerticalStackLayout>
+
+
+        <Grid Grid.Row="1" Margin="25,10">
+            <RoundRectangle Grid.Row="1" CornerRadius="25" Fill="Red" HeightRequest="45"/>
+            <SearchBar VerticalOptions="Center" Placeholder="Buscar"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

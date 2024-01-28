@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:RestaurantReservationApp"
+    x:Class="RestaurantReservationApp.Templates.MenuFooterTemplate">
+    <Grid
+        Margin="15,0,15,0"
+        HeightRequest="75"
+        VerticalOptions="End">
+        <Border
+            BackgroundColor="Green"
+            Stroke="Blue"
+            StrokeShape="RoundRectangle 30,30,30,30"
+            StrokeThickness="2">
+            <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*" RowSpacing="3">
+                <Label Grid.Row="1" FontSize="10" HorizontalOptions="Center" Text="Top">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Home"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Row="1" Grid.Column="1" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Restaurantes" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Restaurantes"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Row="1" Grid.Column="2" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Historial">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Historial"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Row="1" Grid.Column="3" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Perfil">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Perfil"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="0" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.StarEmpty1}" FontFamily="Icons">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Home"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="1" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.Food}" FontFamily="Icons" Opacity=".6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Restaurantes"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="2" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.History}" FontFamily="Icons" Opacity=".6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Historial"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Column="3" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.User}" FontFamily="Icons" Opacity=".6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Perfil"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</ContentView>
+
