@@ -1,29 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestaurantReservationApp.Views.HomePage"
-             xmlns:local="clr-namespace:RestaurantReservationApp"
-             xmlns:template="clr-namespace:RestaurantReservationApp.Templates">
-    <Grid RowDefinitions=".05*, .45*, .05*, .3*">
-        <Label FontSize="16" HorizontalOptions="Center" Text="Top Restaurantes" VerticalOptions="Center"/>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RestaurantReservationApp.Views.HomePage"
+    xmlns:local="clr-namespace:RestaurantReservationApp"
+    xmlns:template="clr-namespace:RestaurantReservationApp.Templates"
+    Shell.NavBarIsVisible="False" >
+    <Grid RowDefinitions=".05*, .6*, .05*, .2*">
+        <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            Text="Top Restaurantes"
+            VerticalOptions="Center"/>
 
         <CarouselView
+            x:Name="carouselTopRestaurants"
             Grid.Row="1"
             IndicatorView="indicatorView"
             ItemsSource="{Binding Restaurants}" PeekAreaInsets="30">
+
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" SnapPointsAlignment="Center" SnapPointsType="MandatorySingle"/>
-
             </CarouselView.ItemsLayout>
+
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Border Grid.RowSpan="3"
-                                BackgroundColor="Blue"
-                                HeightRequest="300"
-                                Stroke="Red"
-                                StrokeShape="RoundRectangle 30,30,30,30"
-                                WidthRequest="300">
+                    <Grid RowDefinitions=".6*, .4*">
+                        <Border
+                            HeightRequest="300"
+                            StrokeShape="RoundRectangle 30,30,30,30"
+                            WidthRequest="300">
                             <Grid RowDefinitions=".2*, .6*, .2*">
                                 <Image Aspect="AspectFill" Source="{Binding ImagePath}" Grid.RowSpan="3"/>
 
@@ -32,29 +38,48 @@
                                         <LinearGradientBrush>
                                             <GradientStop Offset="0" Color="Transparent"/>
                                             <GradientStop Offset="1" Color="#030005"/>
-
                                         </LinearGradientBrush>
-
                                     </RoundRectangle.Fill>
-
                                 </RoundRectangle>
 
 
                                 <VerticalStackLayout Grid.Row="2" Margin="20,0,0,0">
-                                    <Label Text="{Binding Nombre}" FontSize="Large" TextColor="White"/>
+                                    <Label Text="{Binding Name}" FontSize="Large" TextColor="White"/>
                                 </VerticalStackLayout>
 
-                                <Label Margin="0,20,20,0" FontFamily="Icons" FontSize="25" HorizontalOptions="End" Text="{x:Static local:IconFont.BookmarkEmpty}" TextColor="White"/>
+                                <Label Margin="0,20,20,0" FontFamily="Icons" FontSize="25" HorizontalOptions="End" Text="{x:Static local:IconFont.BookmarkEmpty}" TextColor="White">
+                                    <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.SaveRestaurantCommand, Source={x:Reference carouselTopRestaurants}}" CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRestaurantCommand, Source={x:Reference carouselTopRestaurants}}" CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
                             </Grid>
                             <Border.Shadow>
-                                <Shadow Brush="Green" Opacity=".7" Radius="{OnPlatform 100, Android=100, iOS=30}" Offset="0,0"/>
+                                <Shadow Brush="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Opacity=".7" Radius="{OnPlatform 100, Android=100, iOS=30}" Offset="0,0"/>
                             </Border.Shadow>
                         </Border>
+                        
+                        <VerticalStackLayout Grid.Row="1" Margin="20" Spacing="10">
+                            <Label
+                                FontSize="14"
+                                LineHeight="1.3">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, em Ipsum."
+                                            />
+
+                                        <Span Text=" ... Leer mas" TextColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"/>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
                     </Grid>
                 </DataTemplate>
-
             </CarouselView.ItemTemplate>
-
         </CarouselView>
 
         <IndicatorView
@@ -64,9 +89,7 @@
             IndicatorSize="8"
             VerticalOptions="Center"/>
 
-        <Grid Grid.Row="3">
-            <template:MenuFooterTemplate/>
-        </Grid>
+        <template:MenuFooterTemplate Grid.Row="3"/>
 
     </Grid>
 </ContentPage>

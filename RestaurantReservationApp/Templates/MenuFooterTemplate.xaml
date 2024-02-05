@@ -9,51 +9,112 @@
         HeightRequest="75"
         VerticalOptions="End">
         <Border
-            BackgroundColor="Green"
-            Stroke="Blue"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
             StrokeShape="RoundRectangle 30,30,30,30"
-            StrokeThickness="2">
-            <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*" RowSpacing="3">
-                <Label Grid.Row="1" FontSize="10" HorizontalOptions="Center" Text="Top">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Home"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Row="1" Grid.Column="1" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Restaurantes" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Restaurantes"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Row="1" Grid.Column="2" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Historial">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Historial"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Row="1" Grid.Column="3" FontSize="10" HorizontalOptions="Center" Opacity=".6" Text="Perfil">
-                    <Label.GestureRecognizers>
+            StrokeThickness="1.5">
+            <Grid ColumnDefinitions="*,*,*,*">
+                <Grid Grid.Column="0" VerticalOptions="Center">
+                    <Border
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        StrokeShape="RoundRectangle 40,40,40,40"
+                        IsVisible="False">
+                        <Border.Triggers>
+                            <DataTrigger Binding="{Binding HomeActivated}" Value="True" TargetType="Border">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                    </Border>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.Star}" FontFamily="Icons"/>
+                        <Label FontSize="10" HorizontalOptions="Center" Text="Top"/>
+                    </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Home"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <Grid Grid.Column="1" VerticalOptions="Center">                    
+                    <Border
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        StrokeShape="RoundRectangle 40,40,40,40"
+                        IsVisible="False">
+                        <Border.Triggers>
+                            <DataTrigger Binding="{Binding RestaurantesActivated}" Value="True" TargetType="Border">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                    </Border>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.Food}" FontFamily="Icons"/>
+                        <Label FontSize="10" HorizontalOptions="Center"  Text="Restaurantes" />
+                    </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Restaurantes"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <Grid Grid.Column="2" VerticalOptions="Center">                    
+                    <Border
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        StrokeShape="RoundRectangle 40,40,40,40"
+                        IsVisible="False">
+                        <Border.Triggers>
+                            <DataTrigger Binding="{Binding HistorialActivated}" Value="True" TargetType="Border">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                    </Border>                    
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.History}" FontFamily="Icons"/>
+                        <Label FontSize="10" HorizontalOptions="Center"  Text="Historial"/>
+                    </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Historial"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <Grid Grid.Column="3" VerticalOptions="Center">                    
+                    <Border
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        StrokeShape="RoundRectangle 40,40,40,40"
+                        IsVisible="False">
+                        <Border.Triggers>
+                            <DataTrigger Binding="{Binding PerfilActivated}" Value="True" TargetType="Border">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                    </Border>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.User}" FontFamily="Icons"/>
+                        <Label FontSize="10" HorizontalOptions="Center"  Text="Perfil"/>
+                    </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Perfil"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Column="0" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.StarEmpty1}" FontFamily="Icons">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Home"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Column="1" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.Food}" FontFamily="Icons" Opacity=".6">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Restaurantes"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Column="2" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.History}" FontFamily="Icons" Opacity=".6">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Historial"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Grid.Column="3" VerticalOptions="End" FontSize="20" HorizontalOptions="Center" Text="{x:Static local:IconFont.User}" FontFamily="Icons" Opacity=".6">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangePageCommand}" CommandParameter="Perfil"/>
-                    </Label.GestureRecognizers>
-                </Label>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+
+
+                
+                
+                
+                
 
             </Grid>
 

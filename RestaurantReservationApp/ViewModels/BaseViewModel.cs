@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using PropertyChanged;
 using RestaurantReservationApp.Views;
 
@@ -8,6 +9,8 @@ namespace RestaurantReservationApp.ViewModels
 	public class BaseViewModel
     {
         #region Properties
+        // public event PropertyChangedEventHandler PropertyChanged;
+
         public string PageActual { get; set; }
         public ICommand ChangePageCommand => new Command<string>(OnChangePageCommand);
 
@@ -15,6 +18,14 @@ namespace RestaurantReservationApp.ViewModels
         public string Restaurantes = "Restaurantes";
         public string Historial = "Historial";
         public string Perfil = "Perfil";
+
+        public bool HomeActivated { get; set; }
+        public bool RestaurantesActivated { get; set; }
+        public bool HistorialActivated { get; set; }
+        public bool PerfilActivated { get; set; }
+
+        public ICommand SaveRestaurantCommand => new Command(OnSaveRestaurantCommand);
+        public ICommand GoBackCommand => new Command(OnGoBackCommand);
         #endregion Properties
 
         #region Constructor
@@ -22,8 +33,6 @@ namespace RestaurantReservationApp.ViewModels
 		{
         }
         #endregion Constructor
-
-
 
         #region Commands
         /// <summary>
@@ -45,6 +54,22 @@ namespace RestaurantReservationApp.ViewModels
                 case nameof(Perfil):
                     return;
             }
+        }
+
+        /// <summary>
+        /// Comando para regresar de la pagina
+        /// </summary>
+        private async void OnGoBackCommand()
+        {
+            await Shell.Current.GoToAsync("..", true);
+        }
+
+        /// <summary>
+        /// Comando para guardar el restaurante
+        /// </summary>
+        private void OnSaveRestaurantCommand()
+        {
+
         }
         #endregion Commands
     }

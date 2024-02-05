@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RestaurantReservationApp.Views.RestaurantDetailPage"
+    xmlns:local="clr-namespace:RestaurantReservationApp"
+    Shell.NavBarIsVisible="False" >
+    <Grid Margin="15" RowDefinitions=".4*, .1*, .1*, .4*">
+        <Border Grid.RowSpan="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Grid RowDefinitions=".3*, .7*">
+                <Image
+                    Grid.RowSpan="2"
+                    Aspect="AspectFill"
+                    Source="{Binding Restaurant.ImagePath}"/>
+                <Grid ColumnDefinitions="*, *">
+                    <Border
+                        Margin="15, 35, 0, 0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+                        HeightRequest="50"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        WidthRequest="50">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Label
+                            FontFamily="Icons"
+                            FontSize="25"
+                            VerticalTextAlignment="Center"
+                            HorizontalOptions="Center"
+                            Text="{x:Static local:IconFont.AngleLeft}">
+                        </Label>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        Margin="0, 35, 15, 0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+                        HeightRequest="50"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        WidthRequest="50">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Label
+                            FontFamily="Icons"
+                            FontSize="25"
+                            VerticalTextAlignment="Center"
+                            HorizontalOptions="Center"
+                            Text="{x:Static local:IconFont.BookmarkEmpty}"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SaveRestaurantCommand}"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Stroke="{AppThemeBinding Light={StaticResource Gray100Brush}, Dark={StaticResource Gray600Brush}}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30"/>
+            </Border.StrokeShape>
+            <VerticalStackLayout
+                Padding="20"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
+                <Label Text="{Binding Restaurant.Name}" FontSize="Large"/>
+                <Label Text="{Binding Restaurant.Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
+                <Grid ColumnDefinitions="*, *">
+                    <HorizontalStackLayout>
+                        <Label
+                            FontFamily="Icons"
+                            FontSize="25"
+                            VerticalTextAlignment="Center"
+                            HorizontalOptions="Center"
+                            Text="{x:Static local:IconFont.Star}"
+                            TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
+                        <Label
+                            Text="{Binding Restaurant.Score, StringFormat='  5.0 {0}'}"
+                            VerticalTextAlignment="Center"
+                            FontSize="Medium"/>
+                    </HorizontalStackLayout>
+                    <Button Grid.Column="1" Text="Carta" />
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+        
+        <Grid RowDefinitions=".8*, Auto" Grid.Row="3">
+            <ScrollView VerticalOptions="FillAndExpand">
+                <VerticalStackLayout Margin="0,20,0,20" Spacing="10">
+                    <Label
+                        Text="Descripcion: "
+                        FontSize="16"/>
+                    <Label
+                        FontSize="14"
+                        LineHeight="1.3">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, em Ipsum."
+                                    />
+
+                                <Span Text=" ... Leer mas" TextColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"/>
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Button
+                Grid.Row="2"
+                Text="RESERVAR"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
