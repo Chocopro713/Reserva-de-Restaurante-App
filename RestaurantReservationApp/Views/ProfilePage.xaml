@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RestaurantReservationApp.Views.ProfilePage"
+    Shell.NavBarIsVisible="False"
+    Title="ProfilePage">
+    <Grid RowDefinitions="*, *">
+        <Grid Grid.RowSpan="2">
+            <Image Source="fondo_perfil.jpg" Aspect="Fill" />
+
+            <RoundRectangle Opacity=".6">
+                <RoundRectangle.Fill>
+                    <LinearGradientBrush>
+                        <GradientStop Offset="0" Color="Transparent"/>
+                        <GradientStop Offset="1" Color="#030005"/>
+                    </LinearGradientBrush>
+                </RoundRectangle.Fill>
+            </RoundRectangle>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Margin="20" VerticalOptions="Center" Spacing="30">
+            <Button Text="Ya tengo cuenta">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Text="Registrarme">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

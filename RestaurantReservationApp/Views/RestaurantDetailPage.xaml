@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="RestaurantReservationApp.Views.RestaurantDetailPage"
     xmlns:local="clr-namespace:RestaurantReservationApp"
-    Shell.NavBarIsVisible="False" >
+    Shell.NavBarIsVisible="False" 
+    Shell.TabBarIsVisible="False">
     <Grid Margin="15" RowDefinitions=".4*, .1*, .1*, .4*">
         <Border Grid.RowSpan="2">
             <Border.StrokeShape>
@@ -53,7 +54,7 @@
                             FontSize="25"
                             VerticalTextAlignment="Center"
                             HorizontalOptions="Center"
-                            Text="{x:Static local:IconFont.BookmarkEmpty}"/>
+                            Text="{x:Static local:IconFont.HeartEmpty}"/>
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SaveRestaurantCommand}"/>
                         </Border.GestureRecognizers>

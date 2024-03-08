@@ -4,14 +4,31 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RestaurantReservationApp"
-    xmlns:local2="clr-namespace:RestaurantReservationApp.Views"
+    xmlns:localViews="clr-namespace:RestaurantReservationApp.Views"
+    xmlns:lang="clr-namespace:RestaurantReservationApp.Resources.Languages"
     Shell.FlyoutBehavior="Disabled"
     Title="RestaurantReservationApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local2:HomePage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="{x:Static lang:AppResources.TabTop}">
+            <Tab.Icon>
+                <FontImageSource FontFamily="Icons" Glyph="{x:Static local:IconFont.Star}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate localViews:HomePage}" />
+        </Tab>
+        <Tab Title="{x:Static lang:AppResources.TabRestaurant}">
+            <Tab.Icon>
+                <FontImageSource FontFamily="Icons" Glyph="{x:Static local:IconFont.Restaurant}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate localViews:RestaurantsPage}" />
+        </Tab>
+        <Tab Title="{x:Static lang:AppResources.TabProfile}">
+            <Tab.Icon>
+                <FontImageSource FontFamily="Icons" Glyph="{x:Static local:IconFont.User}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate localViews:ProfilePage}" />
+        </Tab>
+    </TabBar>    
 
 </Shell>
 

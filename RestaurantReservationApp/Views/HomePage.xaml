@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:RestaurantReservationApp"
     xmlns:template="clr-namespace:RestaurantReservationApp.Templates"
     Shell.NavBarIsVisible="False" >
-    <Grid RowDefinitions=".05*, .6*, .05*, .2*">
+    <Grid RowDefinitions=".05*, *, Auto">
         <Label
             FontSize="16"
             HorizontalOptions="Center"
@@ -47,7 +47,7 @@
                                     <Label Text="{Binding Name}" FontSize="Large" TextColor="White"/>
                                 </VerticalStackLayout>
 
-                                <Label Margin="0,20,20,0" FontFamily="Icons" FontSize="25" HorizontalOptions="End" Text="{x:Static local:IconFont.BookmarkEmpty}" TextColor="White">
+                                <Label Margin="0,20,20,0" FontFamily="Icons" FontSize="25" HorizontalOptions="End" Text="{x:Static local:IconFont.HeartEmpty}" TextColor="White">
                                     <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Path=BindingContext.SaveRestaurantCommand, Source={x:Reference carouselTopRestaurants}}" CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
@@ -89,7 +89,8 @@
             IndicatorSize="8"
             VerticalOptions="Center"/>
 
-        <template:MenuFooterTemplate Grid.Row="3"/>
-
+        <!--
+            <template:MenuFooterTemplate Grid.Row="3"/>
+        -->
     </Grid>
 </ContentPage>
