@@ -7,7 +7,7 @@
     Title="ProfilePage">
     <Grid RowDefinitions="*, *">
         <Grid Grid.RowSpan="2">
-            <Image Source="fondo_perfil.jpg" Aspect="Fill" />
+            <Image Source="{Binding Wallpaper}" Aspect="Fill" />
 
             <RoundRectangle Opacity=".6">
                 <RoundRectangle.Fill>
@@ -19,6 +19,7 @@
             </RoundRectangle>
         </Grid>
 
+        <!--
         <VerticalStackLayout Grid.Row="1" Margin="20" VerticalOptions="Center" Spacing="30">
             <Button Text="Ya tengo cuenta">
                 <Button.Background>
@@ -33,6 +34,21 @@
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
                         <GradientStop Color="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </VerticalStackLayout>
+        -->
+
+
+        <VerticalStackLayout Grid.Row="1" Margin="60, 20" VerticalOptions="Center" Spacing="30">
+            <Button Text="Ya tengo cuenta" TextColor="{StaticResource Primary}" BorderColor="{StaticResource Primary}" BorderWidth="2" BackgroundColor="{StaticResource BackgroundGray}"/>
+
+            <Button Text="Registrarme" TextColor="{StaticResource BackgroundGray}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="{StaticResource Primary}" />
+                        <GradientStop Color="{StaticResource Secondary}" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>

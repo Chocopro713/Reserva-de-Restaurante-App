@@ -15,7 +15,7 @@
             <Grid ColumnDefinitions="*,*,*,*">
                 <Grid Grid.Column="0" VerticalOptions="Center">
                     <Border
-                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         HeightRequest="50"
@@ -39,7 +39,7 @@
 
                 <Grid Grid.Column="1" VerticalOptions="Center">                    
                     <Border
-                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         HeightRequest="50"
@@ -63,7 +63,7 @@
 
                 <Grid Grid.Column="2" VerticalOptions="Center">                    
                     <Border
-                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         HeightRequest="50"
@@ -87,7 +87,7 @@
 
                 <Grid Grid.Column="3" VerticalOptions="Center">                    
                     <Border
-                        BackgroundColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         HeightRequest="50"

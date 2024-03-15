@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Maui.ApplicationModel.Communication;
 using PropertyChanged;
 using RestaurantReservationApp.Views;
 
@@ -31,8 +33,19 @@ namespace RestaurantReservationApp.ViewModels
         #region Constructor
         public BaseViewModel()
 		{
+
         }
         #endregion Constructor
+
+        #region Methods
+        private async void TEST()
+        {
+            // WeakReferenceMessenger.Default.Register<MauiMessage>(this, (r, m) =>
+            // {
+            //     OnMessageReceived(m.Value);
+            // });
+        }
+        #endregion Methods
 
         #region Commands
         /// <summary>

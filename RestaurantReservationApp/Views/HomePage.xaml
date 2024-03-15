@@ -5,7 +5,8 @@
     x:Class="RestaurantReservationApp.Views.HomePage"
     xmlns:local="clr-namespace:RestaurantReservationApp"
     xmlns:template="clr-namespace:RestaurantReservationApp.Templates"
-    Shell.NavBarIsVisible="False" >
+    Shell.NavBarIsVisible="False" 
+    xmlns:models="clr-namespace:RestaurantReservationApp.Models">
     <Grid RowDefinitions=".05*, *, Auto">
         <Label
             FontSize="16"
@@ -17,19 +18,23 @@
             x:Name="carouselTopRestaurants"
             Grid.Row="1"
             IndicatorView="indicatorView"
-            ItemsSource="{Binding Restaurants}" PeekAreaInsets="30">
+            ItemsSource="{Binding Restaurants}" 
+            PeekAreaInsets="30"
+            CurrentItemChanged="carouselTopRestaurants_CurrentItemChanged">
 
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" SnapPointsAlignment="Center" SnapPointsType="MandatorySingle"/>
             </CarouselView.ItemsLayout>
 
             <CarouselView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:RestaurantModel">
                     <Grid RowDefinitions=".6*, .4*">
                         <Border
                             HeightRequest="300"
                             StrokeShape="RoundRectangle 30,30,30,30"
-                            WidthRequest="300">
+                            WidthRequest="300"
+                            Stroke="{StaticResource Primary}"
+                            StrokeThickness="5">
                             <Grid RowDefinitions=".2*, .6*, .2*">
                                 <Image Aspect="AspectFill" Source="{Binding ImagePath}" Grid.RowSpan="3"/>
 
@@ -49,7 +54,7 @@
 
                                 <Label Margin="0,20,20,0" FontFamily="Icons" FontSize="25" HorizontalOptions="End" Text="{x:Static local:IconFont.HeartEmpty}" TextColor="White">
                                     <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.SaveRestaurantCommand, Source={x:Reference carouselTopRestaurants}}" CommandParameter="{Binding .}"/>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SaveRestaurantCommand, Source={x:Reference carouselTopRestaurants}}" CommandParameter="{Binding .}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                                 <Grid.GestureRecognizers>
@@ -57,7 +62,12 @@
                                 </Grid.GestureRecognizers>
                             </Grid>
                             <Border.Shadow>
-                                <Shadow Brush="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Opacity=".7" Radius="{OnPlatform 100, Android=100, iOS=30}" Offset="0,0"/>
+                                <Shadow 
+                                    x:Name="shadowImage"
+                                    Brush="{StaticResource Primary}"
+                                    Opacity=".7"
+                                    Radius="{Binding Source={x:Reference carouselTopRestaurants}, Path=BindingContext.ShadowRadius}" 
+                                    Offset="0,0"/>
                             </Border.Shadow>
                         </Border>
                         
@@ -71,7 +81,7 @@
                                             Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, em Ipsum."
                                             />
 
-                                        <Span Text=" ... Leer mas" TextColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource AccentDark}}"/>
+                                        <Span Text=" ... Leer mas" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 
                                     </FormattedString>
                                 </Label.FormattedText>

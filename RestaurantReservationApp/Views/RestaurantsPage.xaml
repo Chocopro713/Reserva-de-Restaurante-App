@@ -5,21 +5,21 @@
     x:Class="RestaurantReservationApp.Views.RestaurantsPage"
     xmlns:local="clr-namespace:RestaurantReservationApp"
     Shell.NavBarIsVisible="False"
-    Title="RestaurantsPage">
-    <VerticalStackLayout>
+    xmlns:model="clr-namespace:RestaurantReservationApp.Models"
+    Title="RestaurantsPage"
+    xmlns:cv="clr-namespace:Yang.MAUICollectionView;assembly=MauiUICollectionView">
+    <Grid RowDefinitions="*">
 
         <!--
         <Grid Margin="25,10">
             <RoundRectangle CornerRadius="25" HeightRequest="45"/>
             <SearchBar VerticalOptions="Center" Placeholder="Buscar" SearchCommand="{Binding SearchRestaurants}"/>
         </Grid>
-        -->
-
         <Button Text="Test" Command="{Binding SearchRestaurants}" Margin="20"/>
 
 
-
-        <ScrollView>
+        -->
+        <!--
             <StackLayout BindableLayout.ItemsSource="{Binding Restaurants}" VerticalOptions="FillAndExpand">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -51,6 +51,47 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
-        </ScrollView>
-    </VerticalStackLayout>
+                            <Image Source="{Binding ImagePath}"/>
+            -->
+
+
+
+        <CollectionView 
+            ItemsSource="{Binding Restaurants}"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout 
+                    Orientation="Vertical"
+                    Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:RestaurantModel">
+                    <Border Margin="20">
+                        <Grid RowDefinitions="*, *">
+                            <Image Source="{Binding ImagePath}"/>
+                            <Grid Grid.Row="1">
+                                <Label Text="{Binding Name}" FontSize="Large"/>
+                                <Label Text="{Binding Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
+                                <Grid ColumnDefinitions="*, *">
+                                    <HorizontalStackLayout>
+                                        <Label
+                                                FontFamily="Icons"
+                                                FontSize="25"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalOptions="Center"
+                                                Text="{x:Static local:IconFont.Star}"
+                                                TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
+                                        <Label
+                                                Text="{Binding Score, StringFormat='  5.0 {0}'}"
+                                                VerticalTextAlignment="Center"
+                                                FontSize="Medium"/>
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

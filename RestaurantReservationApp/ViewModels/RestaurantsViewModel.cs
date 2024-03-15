@@ -14,8 +14,9 @@ namespace RestaurantReservationApp.ViewModels
 
         #region Constructor
         public RestaurantsViewModel()
-		{
-		}
+        {
+            InitData();
+        }
         #endregion Constructor
 
         #region Methods
@@ -28,26 +29,72 @@ namespace RestaurantReservationApp.ViewModels
                 {
                     Name = "Test Restaurant 1",
                     Address = "Test Address 1",
-                    ImagePath = "https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/2K7FHLJP75FGRO2LKQMCFKFKWA.jpg",
+                    ImagePath = "dotnet_bot.png",
                 },
                 new RestaurantModel()
                 {
                     Name = "Test Restaurant 2",
                     Address = "Test Address 2",
-                    ImagePath = "https://www.eltiempo.com/files/image_640_428/uploads/2022/11/11/636ec9b036dfd.png",
+                    ImagePath = "dotnet_bot.png",
                 },
                 new RestaurantModel()
                 {
                     Name = "Test Restaurant 3",
                     Address = "Test Address 3",
-                    ImagePath = "https://resizer.otstatic.com/v2/photos/wide-large/2/50220121.jpg",
+                    ImagePath = "dotnet_bot.png",
                 },
                 new RestaurantModel()
                 {
                     Name = "Test Restaurant 4",
                     Address = "Test Address 4",
-                    ImagePath = "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2021/12/23/61c456cc62a0b.r_d.2520-1680-0.jpeg",
+                    ImagePath = "dotnet_bot.png",
                 },
+
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 1",
+                    Address = "Test Address 1",
+                    ImagePath = "dotnet_bot.png",
+                },
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 2",
+                    Address = "Test Address 2",
+                    ImagePath = "dotnet_bot.png",
+                },
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 3",
+                    Address = "Test Address 3",
+                    ImagePath = "dotnet_bot.png",
+                },
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 4",
+                    Address = "Test Address 4",
+                    ImagePath = "dotnet_bot.png",
+                },
+
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 1",
+                    Address = "Test Address 1",
+                    ImagePath = "dotnet_bot.png",
+                },
+
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 1",
+                    Address = "Test Address 1",
+                    ImagePath = "dotnet_bot.png",
+                },
+
+                new RestaurantModel()
+                {
+                    Name = "Test Restaurant 1",
+                    Address = "Test Address 1",
+                    ImagePath = "dotnet_bot.png",
+                }
             };
         }
         #endregion Methods
@@ -55,7 +102,7 @@ namespace RestaurantReservationApp.ViewModels
         #region Commands
         private void OnSearchRestaurants()
         {
-            InitData();
+            // InitData();
         }
         #endregion Commands
     }

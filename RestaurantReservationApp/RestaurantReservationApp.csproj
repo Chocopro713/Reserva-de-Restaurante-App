@@ -60,15 +60,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.10" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.10" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Yang.MAUICollectionView" Version="0.0.5-pre" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\fondo_perfil.jpg" />
+	  <None Remove="Resources\Images\fondo_claro_1.avif" />
+	  <None Remove="Resources\Images\fondo_claro_2.avif" />
+	  <None Remove="Resources\Images\fondo_claro_3.avif" />
+	  <None Remove="Resources\Images\fondo_oscuro_1.avif" />
+	  <None Remove="Resources\Images\fondo_oscuro_2.avif" />
+	  <None Remove="Resources\Images\fondo_oscuro_3.avif" />
+	  <None Remove="Resources\Images\fondo_restaurant.jpg" />
 	  <None Remove="Views\" />
 	  <None Remove="ViewModels\" />
 	  <None Remove="Models\" />
@@ -78,10 +86,8 @@
 	  <None Remove="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Templates\" />
-	  <Folder Include="Helpers\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Fonts\Epilogue-Medium.ttf" />
