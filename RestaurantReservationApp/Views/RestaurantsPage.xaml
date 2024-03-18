@@ -66,30 +66,32 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:RestaurantModel">
-                    <Border Margin="20">
-                        <Grid RowDefinitions="*, *">
-                            <Image Source="{Binding ImagePath}"/>
-                            <Grid Grid.Row="1">
-                                <Label Text="{Binding Name}" FontSize="Large"/>
-                                <Label Text="{Binding Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
-                                <Grid ColumnDefinitions="*, *">
-                                    <HorizontalStackLayout>
-                                        <Label
+                    <Grid>
+                        <Border Margin="20">
+                            <Grid RowDefinitions="*, *">
+                                <Image Source="{Binding ImagePath}"/>
+                                <Grid Grid.Row="1">
+                                    <Label Text="{Binding Name}" FontSize="Large"/>
+                                    <Label Text="{Binding Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
+                                    <Grid ColumnDefinitions="*, *">
+                                        <HorizontalStackLayout>
+                                            <Label
                                                 FontFamily="Icons"
                                                 FontSize="25"
                                                 VerticalTextAlignment="Center"
                                                 HorizontalOptions="Center"
                                                 Text="{x:Static local:IconFont.Star}"
                                                 TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
-                                        <Label
+                                            <Label
                                                 Text="{Binding Score, StringFormat='  5.0 {0}'}"
                                                 VerticalTextAlignment="Center"
                                                 FontSize="Medium"/>
-                                    </HorizontalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

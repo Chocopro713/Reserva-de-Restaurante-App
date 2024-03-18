@@ -17,7 +17,7 @@
 
         private const double MaxShadowRadius = 120; // Máximo radio de la sombra
         private const double MinShadowRadius = 20; // Mínimo radio de la sombra
-        private const int AnimationDuration = 2000; // Duración de la animación en milisegundos
+        private const int AnimationDuration = 1000; // Duración de la animación en milisegundos
         #endregion Properties
 
         #region Constructor
@@ -69,21 +69,38 @@
         private void StartAnimation()
         {
             IsAnimating = true;
-            Device.StartTimer(TimeSpan.FromMilliseconds(AnimationDuration), () =>
+
+            double currentRadius = MinShadowRadius;
+
+
+
+
+
+            /*
+            Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
             {
-                // Invertir la dirección de la animación
-                if (ShadowRadius == MaxShadowRadius)
+                // Aumentar o disminuir el radio de la sombra según la dirección
+                if (currentRadius < MaxShadowRadius)
                 {
-                    ShadowRadius = MinShadowRadius;
+                    currentRadius += 10; // Aumentar el radio
+                }
+                else if (currentRadius >= MaxShadowRadius && currentRadius > MinShadowRadius)
+                {
+                    currentRadius -= 10; // Disminuir el radio
                 }
                 else
                 {
-                    ShadowRadius = MaxShadowRadius;
+                    // Reiniciar la animación
+                    currentRadius = MinShadowRadius;
                 }
+
+                // Actualizar el radio del efecto de sombra
+                ShadowRadius = currentRadius;
 
                 // Continuar la animación mientras esté activa
                 return IsAnimating;
             });
+            */
         }
         #endregion Methods
 
