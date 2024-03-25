@@ -1,4 +1,6 @@
-﻿using RestaurantReservationApp.Models;
+﻿using Newtonsoft.Json;
+using RestaurantReservationApp.Models;
+using RestaurantReservationApp.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -9,7 +11,10 @@ namespace RestaurantReservationApp.ViewModels
         #region Properties
         public ObservableCollection<RestaurantModel> Restaurants { get; set; } = new ObservableCollection<RestaurantModel>();
 
+        public string Search { get; set; }
+
         public ICommand SearchRestaurants => new Command(OnSearchRestaurants);
+        public ICommand GoToRestaurantCommand => new Command<RestaurantModel>(OnGoToRestaurantCommand);
         #endregion Properties
 
         #region Constructor
@@ -103,6 +108,13 @@ namespace RestaurantReservationApp.ViewModels
         private void OnSearchRestaurants()
         {
             // InitData();
+        }
+
+        public async void OnGoToRestaurantCommand(RestaurantModel restaurant)
+        {
+            var jsonstring = JsonConvert.SerializeObject(restaurant);
+            var navigationParameter = new Dictionary<string, object> { { "RestaurantJson", jsonstring } };
+            await Shell.Current.GoToAsync($"/{nameof(RestaurantDetailPage)}", true, navigationParameter);
         }
         #endregion Commands
     }

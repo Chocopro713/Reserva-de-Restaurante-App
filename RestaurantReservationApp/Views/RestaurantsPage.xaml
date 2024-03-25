@@ -6,94 +6,66 @@
     xmlns:local="clr-namespace:RestaurantReservationApp"
     Shell.NavBarIsVisible="False"
     xmlns:model="clr-namespace:RestaurantReservationApp.Models"
-    Title="RestaurantsPage"
-    xmlns:cv="clr-namespace:Yang.MAUICollectionView;assembly=MauiUICollectionView">
-    <Grid RowDefinitions="*">
-
-        <!--
-        <Grid Margin="25,10">
-            <RoundRectangle CornerRadius="25" HeightRequest="45"/>
-            <SearchBar VerticalOptions="Center" Placeholder="Buscar" SearchCommand="{Binding SearchRestaurants}"/>
-        </Grid>
-        <Button Text="Test" Command="{Binding SearchRestaurants}" Margin="20"/>
-
-
-        -->
-        <!--
-            <StackLayout BindableLayout.ItemsSource="{Binding Restaurants}" VerticalOptions="FillAndExpand">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Border>
-                            <Grid RowDefinitions="*, *">
-                                <Image Source="{Binding ImagePath}"/>
-                                <Grid>
-                                    <Label Text="{Binding Name}" FontSize="Large"/>
-                                    <Label Text="{Binding Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
-                                    <Grid ColumnDefinitions="*, *">
+    Title="RestaurantsPage">
+    <ScrollView>
+        <VerticalStackLayout>
+        <Border Margin="15, 20, 15, 10" Padding="-2" StrokeThickness="1.5" StrokeShape="RoundRectangle 16">
+            <SearchBar
+                Text="{Binding Search}"
+                VerticalOptions="Center"
+                Placeholder="Buscar"
+                SearchCommand="{Binding SearchRestaurants}"/>
+        </Border>
+            <CollectionView
+                x:Name="listRestaurants"
+                ItemsSource="{Binding Restaurants}"
+                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout 
+                        Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:RestaurantModel">
+                        <Grid>
+                            <Border Margin="15" StrokeThickness="2" StrokeShape="RoundRectangle 16">
+                                <Grid RowDefinitions="Auto,*, *">
+                                    <Border BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}">
+                                        <Label Text="Descuento del 25%" HorizontalTextAlignment="Center"/>
+                                    </Border>
+                                    <Image Source="{Binding ImagePath}" Grid.Row="1"/>
+                                    <VerticalStackLayout Grid.Row="2" Padding="10, 5">
+                                        <Label Text="{Binding Name}"/>
                                         <HorizontalStackLayout>
                                             <Label
                                                 FontFamily="Icons"
-                                                FontSize="25"
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="Center"
+                                                FontSize="20"
                                                 Text="{x:Static local:IconFont.Star}"
                                                 TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
                                             <Label
-                                                Text="{Binding Score, StringFormat='  5.0 {0}'}"
-                                                VerticalTextAlignment="Center"
-                                                FontSize="Medium"/>
+                                                Text="{Binding Score, StringFormat='  5.0 {0} (100)'}"
+                                                VerticalTextAlignment="Center"/>
                                         </HorizontalStackLayout>
-                                        <Button Grid.Column="1" Text="Carta" />
-                                    </Grid>
+                                        <HorizontalStackLayout>
+                                            <Label
+                                                FontFamily="Icons"
+                                                FontSize="20"
+                                                Text="{x:Static local:IconFont.Location}"
+                                                TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
+                                            <Label
+                                                Text="{Binding Address, StringFormat='  {0}'}"
+                                                VerticalTextAlignment="Center"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
                                 </Grid>
-                            </Grid>
-                        </Border>
+                            </Border>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRestaurantCommand, Source={x:Reference listRestaurants}}" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-                            <Image Source="{Binding ImagePath}"/>
-            -->
-
-
-
-        <CollectionView 
-            ItemsSource="{Binding Restaurants}"
-            VerticalOptions="FillAndExpand">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout 
-                    Orientation="Vertical"
-                    Span="2" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:RestaurantModel">
-                    <Grid>
-                        <Border Margin="20">
-                            <Grid RowDefinitions="*, *">
-                                <Image Source="{Binding ImagePath}"/>
-                                <Grid Grid.Row="1">
-                                    <Label Text="{Binding Name}" FontSize="Large"/>
-                                    <Label Text="{Binding Type, StringFormat='Bar {0}'}" FontSize="Medium"/>
-                                    <Grid ColumnDefinitions="*, *">
-                                        <HorizontalStackLayout>
-                                            <Label
-                                                FontFamily="Icons"
-                                                FontSize="25"
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="Center"
-                                                Text="{x:Static local:IconFont.Star}"
-                                                TextColor="{AppThemeBinding Light=DarkGoldenrod, Dark=Gold}"/>
-                                            <Label
-                                                Text="{Binding Score, StringFormat='  5.0 {0}'}"
-                                                VerticalTextAlignment="Center"
-                                                FontSize="Medium"/>
-                                        </HorizontalStackLayout>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
